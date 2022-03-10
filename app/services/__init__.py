@@ -12,6 +12,7 @@ def read_csv():
         return peoples
 
     # Faça o raise do seu erro
+    raise ValueError
 
 
 def create_people(data_body):
@@ -21,7 +22,7 @@ def create_people(data_body):
 
     if filter_cpf_exists:
         # Faça o raise do seu erro
-        pass
+        raise ValueError
 
     fieldnames=['nome', 'idade', 'cpf']
     
