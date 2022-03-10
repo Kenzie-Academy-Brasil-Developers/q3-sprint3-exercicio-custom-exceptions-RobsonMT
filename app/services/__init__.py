@@ -1,5 +1,5 @@
 import csv
-# Importe suas classes de exceções
+from ..exc import EmptyListError, CpfExistError
 
 FILENAME='dados_pessoas.csv'
 
@@ -11,8 +11,7 @@ def read_csv():
     if peoples:
         return peoples
 
-    # Faça o raise do seu erro
-    raise ValueError
+    raise(EmptyListError)
 
 
 def create_people(data_body):
@@ -21,8 +20,7 @@ def create_people(data_body):
     filter_cpf_exists = [people for people in peoples if people['cpf'] == str(data_body['cpf'])]
 
     if filter_cpf_exists:
-        # Faça o raise do seu erro
-        raise ValueError
+        raise(CpfExistError(data_body['cpf']))
 
     fieldnames=['nome', 'idade', 'cpf']
     
